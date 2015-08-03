@@ -4,8 +4,8 @@ author: "Noah"
 date: '`r Sys.Date()`<br><br><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="創用 CC 授權條款" style="border-width:0" src="img/by-nc-sa-4.0-88x31.png" /></a>'
 output:
   ioslides_presentation:
-    fig_height: 5
-    fig_width: 8
+    fig_height: 3
+    fig_width: 6
     highlight: default
     logo: img/Taiwan-R-logo.png
     widescreen: yes
@@ -27,7 +27,7 @@ rm(list=ls())
 
 ## 前面把所有R的基本指令都介紹完了，
 相信有不少人應該可以自豪的說：學了R以後，
-<center><img  src="img/scope100.jpg" height="75%" width="75%"/></center>
+<center><img  src="img/scope_A.png" height="75%" width="75%"/></center>
 
 # 不過......
 
@@ -45,26 +45,26 @@ R社群最神奇的地方就是：<br><br>
 <br><br><br><br><br><br>
 <center><font size='9'>**助教什麼都會!**</font></center>
 
-<br><br><br>
-ps:
-在console命令列中輸入?指令，可以看到該指令詳細的說明，例如?rbind，這時候就會出現相關的資料。
-在console命令列中輸入example(指令)，變可以看到該指令用法，例如：example(rbind)，這時候console就會出現相關的訊息。
-
 
 # 程式前言
 
 ## 程式的概念：
 
-程式，或說是程式語言，名詞中既然既然已經有**語言**這個名詞出現，就表示這種語言基本上和一般中文、英文等語言一定有類似的地方。<br>
+### 一個基本的程式，一般除了變數、資料之外 ，還有許多的指令來協助程式的完成。
 
-像是以前學英文常說的英文有八大詞性，五大句型.....其實電腦程式語言也有類似的用法。<br>
+## 程式的概念：
 
-一個基本的程式，一般除了變數、資料之外 ，還有許多的指令來協助程式的完成。<br>
-簡單說，寫一個程式，其實和寫一段文章，或是一篇小說差不多。<br>
-<img src="img/victory-baby.jpeg" style="float:right" height="30%" width="30%">
+<font size='6'> 程式＝資料＋指令    </font>   <font size='3'>by 民明書房 noah </font>
+<br><br><br><br>
+<div style="float:left">
+<font size='6'>
+簡單說，寫一個程式，<br>
+其實和 **寫一段文章**，或是**一篇小說**差不多。
+</font>
+</div>
 
 
-## 範例：葉丙成老師的BJT Online
+## 葉丙成老師的BJT Online
 <center><img src="img/prof_yei.jpg" height="40%" width="40%" /></center>
 <center><div> <http://www.slideshare.net/rhonda1305/20140510-1> </div></center>
 
@@ -76,8 +76,71 @@ ps:
 <font size='6'> 今天不是來教大家學英文，<br><br>
 也不是來講機率或翻轉教育課程，<br><br>
 所以下面還是來學R吧</font>
-<div style="float:right"><img src="img/meme-computer_stare.jpg" height="50%" width="50%"></div>
+<img src="img/meme-computer_stare.jpg" style="float:right" height="50%" width="50%">
 
+# 小天使複習班：
+## R常用指令1
+<img src="img/R_commands5-1.png" style="float:center" height="80%" width="80%" />
+<https://www.calvin.edu/~scofield/courses/m143/materials/RcmdsFromClass.pdf>
+
+## R常用指令2
+<img src="img/R_commands5-2.png" style="float:center" height="80%" width="80%" />
+<https://www.calvin.edu/~scofield/courses/m143/materials/RcmdsFromClass.pdf>
+
+## 小提醒：data.frame()
+
+```{r, fig.width=6, fig.height=3}
+num1 = c(2, 3, 5) 
+str1 = c("aa", "bb", "cc") 
+logic1 = c(TRUE, FALSE, TRUE) 
+df1 = data.frame(num1, str1, logic1)       # df1表示把data.frame()括號內的資料結合成為data.frame型態
+df1
+```
+
+## 比較c() vs data.frame()
+```{r, fig.width=6, fig.height=3}
+df2 = c(num1, str1, logic1) # df2表示為c()括號中向量資料的結合
+df2
+```
+
+# 小提醒：讀取檔案、表格：
+## 讀取CSV（Comma-separated values：逗號分隔數值）
+### 表格名稱 = read.csv("讀取的檔案")
+```{r, fig.width=6, fig.height=3}
+iris_csv = read.csv("iris.csv")
+View(iris_csv)
+```
+
+## 一般文字表格
+### 表格名稱 = read.table("讀取的檔案")
+
+```{r, fig.width=6, fig.height=3}
+iris_tab = read.table("iris.txt")
+View(iris_tab)
+```
+## 其他檔案：如excel等
+### 表格名稱 = read.xls("讀取的檔案") 
+注意：這個需要額外的套件來支援excel格式，請先執行：library(gdata)
+
+```{r, echo=FALSE, message=FALSE}
+library(gdata)
+```
+```{r, fig.width=6, fig.height=3}
+library(gdata)
+iris_xls = read.xls("iris.xls")
+View(iris_xls)
+```
+
+## 貼心小提醒：
+1. 
+查詢指令： ** "?指令" **，
+```{r}
+?list
+```
+2. 查詢範例： ** "example(指令)" **，
+```{r}
+example(factor)
+```
 
 # Syllabus
 
@@ -496,10 +559,15 @@ for(input in inputs) {
 
 # 總結：
 
-## 文青的時間
+## 文青的時間 1
+<center><img src="img/bigdata2.png" height="60%" width="60%"></center>
+<center><img src="img/bigdata1.jpg" height="60%" width="60%"></center>
+
+## 文青的時間 2
 There is nothing either good or bad, but thinking makes it so, <br>
 quote from Hamlet | Act 2,Scene 2, William Shakespeare
 <center><img src="img/there-is-nothing.png" height="60%" width="60%"></center>
+
 
 
 # 感想：
